@@ -6,7 +6,7 @@ pipeline{
     stages{
         stage('Checkout'){
             steps{
-                  echo "checkout ${GIT_BRANCH}"
+                  echo "checkout... ${GIT_BRANCH}"
             }
         }
         stage('Test'){
@@ -21,10 +21,13 @@ pipeline{
                 sh 'mvn -DskipTests clean install'
             }
         }
-        stage('Deploy'){
-            steps{
-                echo 'deploying...'
+        if(${GIT_BRANCH} == "master"){
+            stage('Deploy'){
+                steps{
+                    echo 'deploying...'
+                }
             }
         }
+
     }
 }
