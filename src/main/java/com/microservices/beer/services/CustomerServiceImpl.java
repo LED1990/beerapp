@@ -40,4 +40,19 @@ public class CustomerServiceImpl implements CustomerService {
 
         return Optional.of(mapper.customerToDto(customer));
     }
+
+    @Override
+    public void deleteCustomer(Long id) {
+        customerRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<CustomerDto> updateCustomer(CustomerDto customerDto) {
+        if (customerDto.getId() == null){
+            throw new IllegalArgumentException("No customer present in database");
+        }
+        Customer result = customerRepository.save(mapper.dtoToCustomer(customerDto));
+
+        return Optional.of(mapper.customerToDto(result));
+    }
 }

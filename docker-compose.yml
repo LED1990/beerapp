@@ -5,4 +5,4 @@ services:
     image: beer_app_image
     container_name: beer_app_container
     ports:
-    - 8090:8080
+    - 9090:9090

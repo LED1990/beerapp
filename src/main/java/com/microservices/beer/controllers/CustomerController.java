@@ -42,4 +42,20 @@ public class CustomerController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
     }
+
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCustomer(@PathVariable Long id) {
+        customerService.deleteCustomer(id);
+    }
+
+    @PutMapping
+    public ResponseEntity<?> updateCustomer(@RequestBody CustomerDto customerDto) {
+        Optional<CustomerDto> result = customerService.updateCustomer(customerDto);
+        if (result.isPresent()) {
+            result.get().add(linkTo(methodOn(CustomerController.class).getCustomerById(result.get().getId())).withSelfRel());
+            return new ResponseEntity<>(result.get(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 }
