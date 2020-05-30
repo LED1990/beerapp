@@ -21,13 +21,13 @@ pipeline{
                 sh 'mvn -DskipTests clean install'
             }
         }
-        if(${GIT_BRANCH} == "master"){
-            stage('Deploy'){
-                steps{
+        stage('Deploy'){
+            steps{
+                script {
                     echo 'deploying...'
+                    echo "Testing the ${browsers[i]} browser"
                 }
             }
         }
-
     }
 }
