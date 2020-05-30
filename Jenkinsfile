@@ -6,10 +6,10 @@ pipeline{
     stages{
         stage('Checkout'){
             steps{
+//                 checkout scm
                 echo 'checkout'
 //                 git branch: 'master', url:'https://github.com/LED1990/beerapp.git'
                 sh 'echo checkout'
-//                 checkout scm
             }
         }
         stage('Test'){
