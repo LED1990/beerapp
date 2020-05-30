@@ -4,11 +4,6 @@ pipeline{
         maven 'jenkins-maven'
     }
     stages{
-        stage('Checkout'){
-            steps{
-                  echo "checkout... ${GIT_BRANCH}"
-            }
-        }
         stage('Test'){
                     steps{
                         echo 'testing...'
@@ -21,13 +16,14 @@ pipeline{
                 sh 'mvn -DskipTests clean install'
             }
         }
-        if(${GIT_BRANCH} == "master"){
-            stage('Deploy'){
-                steps{
-                    echo 'deploying...'
+        stage('Deploy'){
+            steps{
+                script {
+                    if(GIT_BRANCH == 'master'){
+                        echo 'deploying...'
+                    }
                 }
             }
         }
-
     }
 }
