@@ -6,9 +6,7 @@ pipeline{
     stages{
         stage('Checkout'){
             steps{
-                echo 'checkout'
-//                 git branch: 'master', url:'https://github.com/LED1990/beerapp.git'
-                sh 'echo checkout'
+                  echo "checkout... ${GIT_BRANCH}"
             }
         }
         stage('Test'){
@@ -23,10 +21,13 @@ pipeline{
                 sh 'mvn -DskipTests clean install'
             }
         }
-        stage('Deploy'){
-            steps{
-                echo 'deploying...'
+        if(${GIT_BRANCH} == "master"){
+            stage('Deploy'){
+                steps{
+                    echo 'deploying...'
+                }
             }
         }
+
     }
 }
