@@ -1,0 +1,8 @@
+version: '3'
+services:
+  beer:
+    build: .
+    image: beer_app_image
+    container_name: beer_app_container
+    ports:
+    - 9090:9090
