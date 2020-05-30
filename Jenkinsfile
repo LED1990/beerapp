@@ -24,8 +24,9 @@ pipeline{
         stage('Deploy'){
             steps{
                 script {
-                    echo 'deploying...'
-                    echo "Testing the ${browsers[i]} browser"
+                    if(${GIT_BRANCH} == 'master'){
+                        echo 'deploying...'
+                    }
                 }
             }
         }
