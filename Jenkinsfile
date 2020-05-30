@@ -4,6 +4,14 @@ pipeline{
         maven 'jenkins-maven'
     }
     stages{
+        stage('Checkout'){
+            steps{
+                echo 'checkout'
+//                 git branch: 'master', url:'https://github.com/LED1990/beerapp.git'
+//                 sh 'echo checkout'
+//                 checkout scm
+            }
+        }
         stage('Test'){
                     steps{
                         echo 'testing...'
@@ -18,11 +26,7 @@ pipeline{
         }
         stage('Deploy'){
             steps{
-                script {
-                    if(GIT_BRANCH == 'master'){
-                        echo 'deploying...'
-                    }
-                }
+                echo 'deploying...'
             }
         }
     }
