@@ -5,11 +5,11 @@ pipeline{
     }
     stages{
         stage('Test'){
-                    steps{
-                        echo 'testing...'
-                        sh 'mvn test'
-                    }
+            steps{
+                echo 'testing...'
+                    sh 'mvn test'
                 }
+            }
         stage('Build'){
             steps{
                 echo 'build...'
