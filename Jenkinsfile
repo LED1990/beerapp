@@ -9,10 +9,7 @@ pipeline{
                 echo 'checkout'
 //                 git branch: 'master', url:'https://github.com/LED1990/beerapp.git'
 //                 sh 'echo checkout'
-                checkout scm
-                if(env.BRANCH_NAME == 'develop'){
-                    echo 'branch name develop'
-                }
+//                 checkout scm
             }
         }
         stage('Test'){
