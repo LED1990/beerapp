@@ -9,4 +9,8 @@ public interface CustomerService {
     Optional<CustomerDto> getCustomerById(Long id);
 
     Optional<CustomerDto> addNewCustomer(CustomerDto customerDto);
+
+    void deleteCustomer(Long id);
+
+    Optional<CustomerDto> updateCustomer(CustomerDto customerDto);
 }
