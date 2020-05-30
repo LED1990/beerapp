@@ -24,7 +24,10 @@ pipeline{
         stage('Deploy'){
             steps{
                 script {
-                    if(${GIT_BRANCH} == 'master'){
+//                     if(env.GIT_BRANCH == 'master'){
+//                           echo 'deploying...'
+//                     }
+                    if(GIT_BRANCH == 'master'){
                         echo 'deploying...'
                     }
                 }
