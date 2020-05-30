@@ -4,11 +4,6 @@ pipeline{
         maven 'jenkins-maven'
     }
     stages{
-        stage('Checkout'){
-            steps{
-                  echo "checkout... ${GIT_BRANCH}"
-            }
-        }
         stage('Test'){
                     steps{
                         echo 'testing...'
@@ -24,9 +19,6 @@ pipeline{
         stage('Deploy'){
             steps{
                 script {
-//                     if(env.GIT_BRANCH == 'master'){
-//                           echo 'deploying...'
-//                     }
                     if(GIT_BRANCH == 'master'){
                         echo 'deploying...'
                     }
