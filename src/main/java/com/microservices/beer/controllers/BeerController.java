@@ -29,7 +29,7 @@ public class BeerController {
     @PostMapping
     public ResponseEntity<BeerDto> addNewBeer(@RequestBody BeerDto beerDto) {
         Optional<BeerDto> result = beerService.addNewBeer(beerDto);
-        return result.map(resultDto -> new ResponseEntity<>(resultDto, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        return result.map(resultDto -> new ResponseEntity<>(resultDto, HttpStatus.CREATED)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping("{id}")

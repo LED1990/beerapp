@@ -5,10 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -26,6 +23,8 @@ public class Beer {
     private LocalDate createDate;
     private LocalDate lastModifiedDate;
     private String beerName;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 10)
     private BeerStyleEnum beerStyleEnum;
     private BigDecimal price;
 }
